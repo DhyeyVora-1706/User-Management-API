@@ -1,0 +1,150 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "description": "User Mnagaement API",
+        "title": "User Management"
+    },
+    "host": "localhost:3000",
+    "paths": {
+        "/api/users/add": {
+            "post": {
+                "summary": "To add a new user",
+                "description": "To add a new User",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "desc": "User Credentials",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "500": {
+                        "description": "Something went wrong"
+                    }
+                }
+            }
+        },
+        "/api/users/": {
+            "get": {
+                "summary": "To Get all Users",
+                "description": "To get all the Users",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "500": {
+                        "description": "Something went wrong"
+                    }
+                }
+            }
+        },
+        "/api/users/update/{userId}": {
+            "put": {
+                "summary": "To update a user",
+                "description": "To update a User",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "userId",
+                        "required": true,
+                        "type": "string",
+                        "description": "The Id of user to be updated"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "description": "User credentials",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "404": {
+                        "description": "userId Not Found"
+                    }
+                }
+            }
+        },
+        "/api/users/getuser/{userId}": {
+            "get": {
+                "summary": "To get specific user's info",
+                "description": "To get specific user's info",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "userId",
+                        "required": true,
+                        "type": "string",
+                        "description": "The Id of user whose information is to be fetched."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "404": {
+                        "description": "userId Not Found"
+                    }
+                }
+            }
+        },
+        "/api/users/delete/{userId}": {
+            "get": {
+                "summary": "To delete specific user",
+                "description": "To delete specific user",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "userId",
+                        "required": true,
+                        "type": "string",
+                        "description": "The Id of user to be deleted."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "404": {
+                        "description": "userId Not Found"
+                    }
+                }
+            }
+        }
+    }
+}
